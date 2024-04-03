@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="org.lineageos.recorder2"
+    platformBuildVersionCode="30"
+    platformBuildVersionName="11"
+    android:compileSdkVersion="30"
+    android:compileSdkVersionCodename="11"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This app can get your precise location from location services while the app is in use. Location services for your device must be turned on for the app to get location. This may increase battery usage. -->
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Allows the app to make use of foreground services. -->
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- Allows the app to access the phone features of the device. This permission allows the app to determine the phone number and device IDs, whether a call is active, and the remote number connected by a call. -->
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE" />
+    <!-- This app can record audio using the microphone at any time. -->
+    <uses-permission
+        android:name="android.permission.RECORD_AUDIO" />
+    <!-- Allows the app to prevent the phone from going to sleep. -->
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK" />
+    <application
+        android:theme="@style/AppTheme"
+        android:label="Recorder2"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:extractNativeLibs="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <activity
+            android:theme="@style/AppTheme.Main"
+            android:name="org.lineageos.recorder.RecorderActivity"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <action
+                    android:name="android.intent.action.PHONE_STATE" />
+                <action
+                    android:name="android.provider.MediaStore.RECORD_SOUND" />
+                <category
+                    android:name="android.intent.category.DEFAULT" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+        <activity
+            android:theme="@style/AppTheme.DialogActivity"
+            android:label="@string/delete_title"
+            android:name="org.lineageos.recorder.DeleteLastActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:theme="@style/AppTheme.Main"
+            android:label="@string/list_title"
+            android:name="org.lineageos.recorder.ListActivity"
+            android:parentActivityName="org.lineageos.recorder.RecorderActivity" />
+        <activity
+            android:theme="@style/AppTheme.DialogActivity"
+            android:name="org.lineageos.recorder.DialogActivity"
+            android:excludeFromRecents="true" />
+        <service
+            android:name="org.lineageos.recorder.service.SoundRecorderService"
+            android:exported="false"
+            android:foregroundServiceType="microphone">
+            <intent-filter>
+                <action
+                    android:name="org.lineageos.recorder.service.START" />
+                <action
+                    android:name="org.lineageos.recorder.service.STOP" />
+                <action
+                    android:name="org.lineageos.recorder.service.PAUSE" />
+                <action
+                    android:name="org.lineageos.recorder.service.RESUME" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

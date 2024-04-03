@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@id/main_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:textColor="?android:textColorPrimary"
+        android:id="@id/main_title"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/main_recording_visualizer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/AppTheme.RecordTitle" />
+    <TextView
+        android:textSize="28.0sp"
+        android:id="@id/main_elapsed_time"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_title" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@id/sound_fab"
+        android:clipToPadding="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dip"
+        android:src="@drawable/ic_action_record"
+        android:contentDescription="@string/main_sound_action"
+        app:fabCustomSize="96.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <org.lineageos.recorder.ui.WaveFormView
+        android:id="@id/main_recording_visualizer"
+        android:visibility="invisible"
+        android:layout_width="0.0dip"
+        android:layout_height="128.0dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxAudioValue="@integer/max_audio_value"
+        app:wavesColor="@color/wave" />
+    <ImageView
+        android:id="@id/sound_pause_resume"
+        android:visibility="gone"
+        android:contentDescription="@null"
+        android:layout_marginEnd="16.0dip"
+        app:layout_constraintBottom_toBottomOf="@id/sound_fab"
+        app:layout_constraintEnd_toStartOf="@id/sound_fab"
+        app:layout_constraintTop_toTopOf="@id/sound_fab"
+        style="@style/AppTheme.ImageButton" />
+    <ImageView
+        android:id="@id/sound_list_icon"
+        android:src="@drawable/ic_last_sound"
+        android:contentDescription="@string/sound_last_title"
+        android:layout_marginStart="16.0dip"
+        app:layout_constraintBottom_toBottomOf="@id/sound_fab"
+        app:layout_constraintStart_toEndOf="@id/sound_settings"
+        app:layout_constraintTop_toTopOf="@id/sound_fab"
+        style="@style/AppTheme.ImageButton" />
+    <ImageView
+        android:id="@id/sound_settings"
+        android:src="@drawable/ic_settings"
+        android:contentDescription="@string/sound_last_title"
+        android:layout_marginStart="16.0dip"
+        app:layout_constraintBottom_toBottomOf="@id/sound_fab"
+        app:layout_constraintStart_toEndOf="@id/sound_fab"
+        app:layout_constraintTop_toTopOf="@id/sound_fab"
+        style="@style/AppTheme.ImageButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

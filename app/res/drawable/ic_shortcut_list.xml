@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/ic_shortcut_bg" />
+    <item
+        android:drawable="@drawable/ic_shortcut_list_fg"
+        android:top="8.0dip"
+        android:bottom="8.0dip"
+        android:start="8.0dip"
+        android:end="8.0dip" />
+</layer-list>
